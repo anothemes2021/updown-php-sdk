@@ -1,0 +1,44 @@
+{
+    "name": "biscolab/updown-php-sdk",
+    "description": "UpDown PHP SDK.",
+    "license": "MIT",
+    "keywords": [
+        "ip",
+        "updown",
+	    "monitoring"
+    ],
+    "authors": [
+        {
+            "name": "Roberto Belotti",
+            "email": "roby.belotti@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.1",
+        "guzzlehttp/guzzle": "5.*|6.*"
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "phpunit/phpunit": "^7.0",
+        "psr/log": "^1.0",
+        "phpdocumentor/reflection-docblock": "~2.0",
+        "sami/sami": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Biscolab\\UpDown\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Biscolab\\UpDown\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
+    
