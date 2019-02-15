@@ -12,3 +12,4 @@ cache/
 config/
 report/
 clover.xml
+phpunit.xml

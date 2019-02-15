@@ -1,25 +1,23 @@
 <?php
 /**
  * Copyright (c) 2019 - present
- * updown - UpDownRequestFields.php
+ * updown - DownTimes.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
  * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
-namespace Biscolab\UpDown\Fields;
+namespace Biscolab\UpDown\Types;
+
+use Biscolab\UpDown\Abstracts\AbstractCollection;
 
 /**
- * Class UpDownRequestFields
- * @package Biscolab\UpDown\Fields
+ * Class DownTimes
+ * @package Biscolab\UpDown\Types
  */
-class UpDownRequestFields
+class DownTimes extends AbstractCollection
 {
 
-    /**
-     * string: access_key
-     */
-    const API_KEY = 'api-key';
-
+    protected $children_class = DownTime::class;
 }

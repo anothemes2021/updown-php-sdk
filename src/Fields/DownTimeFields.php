@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2019 - present
- * updown - UpDownRequestFields.php
+ * updown - DownTimeFields.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
  * Initial version created on: 15/2/2019
@@ -11,15 +11,29 @@
 namespace Biscolab\UpDown\Fields;
 
 /**
- * Class UpDownRequestFields
+ * Class DownTimeFields
  * @package Biscolab\UpDown\Fields
  */
-class UpDownRequestFields
+class DownTimeFields
 {
 
     /**
-     * string: access_key
+     * @var string
      */
-    const API_KEY = 'api-key';
+    const ERROR = 'error';
 
+    /**
+     * @var string
+     */
+    const STARTED_AT = 'started_at';
+
+    /**
+     * @var string
+     */
+    const ENDED_AT = 'ended_at';
+
+    /**
+     * @var string
+     */
+    const DURATION = 'duration';
 }
