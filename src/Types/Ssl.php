@@ -16,6 +16,9 @@ use Biscolab\UpDown\Fields\SslFields;
 
 /**
  * Class Ssl
+ * @property int    tested_at
+ * @property bool   valid
+ * @property string error
  * @package Biscolab\UpDown\Types
  */
 class Ssl extends AbstractObject

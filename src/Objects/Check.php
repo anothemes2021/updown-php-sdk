@@ -19,6 +19,27 @@ use Biscolab\UpDown\Types\Ssl;
 
 /**
  * Class Check
+ * @property string token
+ * @property string url
+ * @property int    period
+ * @property float  apdex_t
+ * @property bool   enabled
+ * @property bool   published
+ * @property string alias
+ * @property string string_match
+ * @property string mute_until
+ * @property string http_verb
+ * @property string http_body
+ * @property array  disabled_locations
+ * @property array  custom_headers
+ * @property bool   down
+ * @property int    down_since
+ * @property int    last_status
+ * @property string error
+ * @property int    last_check_at
+ * @property int    next_check_at
+ * @property string favicon_url
+ * @property Ssl    ssl
  * @package Biscolab\UpDown\Object
  */
 class Check extends CrudObject
@@ -32,12 +53,12 @@ class Check extends CrudObject
     /**
      * @var string
      */
-    protected $key = 'token';
+    protected static $collection_type = Checks::class;
 
     /**
      * @var string
      */
-    protected static $collection_type = Checks::class;
+    protected $key = 'token';
 
     /**
      * @var array
@@ -80,8 +101,8 @@ class Check extends CrudObject
         $path = $this->prepareApiPath() . '/metrics';
 
         $response = $this->updown->get($path, [
-            'from' => ($from) ? date(DATE_ISO8601, $from) : $from,
-            'to' => ($to) ? date(DATE_ISO8601, $to) : $to,
+            'from'  => ($from) ? date(DATE_ISO8601, $from) : $from,
+            'to'    => ($to) ? date(DATE_ISO8601, $to) : $to,
             'group' => $group,
         ]);
 

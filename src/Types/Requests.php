@@ -16,13 +16,18 @@ use Biscolab\UpDown\Fields\RequestsFields;
 
 /**
  * Class Requests
+ * @property int   samples
+ * @property int   failures
+ * @property int   satisfied
+ * @property int   tolerated
+ * @property array by_response_time
  * @package Biscolab\UpDown\Types
  */
 class Requests extends AbstractObject
 {
 
     /**
-     * @var array
+     * @var ARRAY
      */
     protected $typeCheck = [
         RequestsFields::SAMPLES          => UpDownFieldType::INT,

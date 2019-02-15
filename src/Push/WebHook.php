@@ -18,6 +18,9 @@ use Biscolab\UpDown\Types\DownTime;
 
 /**
  * Class WebHook
+ * @property string   event
+ * @property Check    check
+ * @property DownTime downtime
  * @package Biscolab\UpDown\Push
  */
 class WebHook extends AbstractObject

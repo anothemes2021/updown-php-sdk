@@ -16,6 +16,10 @@ use Biscolab\UpDown\Fields\DownTimeFields;
 
 /**
  * Class DownTime
+ * @property string error
+ * @property int    started_at
+ * @property int    ended_at
+ * @property int    duration
  * @package Biscolab\UpDown\Types
  */
 class DownTime extends AbstractObject

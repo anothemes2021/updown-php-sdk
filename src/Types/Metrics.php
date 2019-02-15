@@ -16,6 +16,9 @@ use Biscolab\UpDown\Fields\MetricsFields;
 
 /**
  * Class Metrics
+ * @property int    apdex
+ * @property string requests
+ * @property bool   timings
  * @package Biscolab\UpDown\Types
  */
 class Metrics extends AbstractObject

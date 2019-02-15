@@ -16,6 +16,11 @@ use Biscolab\UpDown\Fields\TimingsFields;
 
 /**
  * Class Metrics
+ * @property int redirect
+ * @property int namelookup
+ * @property int connection
+ * @property int handshake
+ * @property int response
  * @package Biscolab\UpDown\Types
  */
 class Timings extends AbstractObject
