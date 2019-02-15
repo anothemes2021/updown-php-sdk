@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2019 - present
- * updown - UpDownRequestFields.php
+ * updown - TimingsFields.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
  * Initial version created on: 15/2/2019
@@ -11,15 +11,21 @@
 namespace Biscolab\UpDown\Fields;
 
 /**
- * Class UpDownRequestFields
+ * Class TimingsFields
  * @package Biscolab\UpDown\Fields
  */
-class UpDownRequestFields
+class TimingsFields
 {
 
-    /**
-     * string: access_key
-     */
-    const API_KEY = 'api-key';
+    const REDIRECT   = "redirect";
 
+    const NAMELOOKUP = "namelookup";
+
+    const CONNECTION = "connection";
+
+    const HANDSHAKE  = "handshake";
+
+    const RESPONSE   = "response";
+
+    const TOTAL      = "total";
 }

@@ -4,7 +4,7 @@
  * updown - UpDownFieldType.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
- * Initial version created on: 9/2/2019
+ * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
@@ -41,5 +41,10 @@ class UpDownFieldType
      * @var string
      */
     const BOOL  = 'bool';
+
+    /**
+     * @var string
+     */
+    const DATETIME  = 'datetime';
 
 }

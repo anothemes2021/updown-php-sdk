@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) 2018 - present
+ * Copyright (c) 2019 - present
  * updown - ResponseException.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
- * Initial version created on: 17/11/2018
+ * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 

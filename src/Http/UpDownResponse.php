@@ -1,16 +1,15 @@
 <?php
 /**
- * Copyright (c) 2018 - present
- * ipstack - UpDownResponse.php
+ * Copyright (c) 2019 - present
+ * updown - UpDownResponse.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
- * Initial version created on: 17/11/2018
+ * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
 namespace Biscolab\UpDown\Http;
 
-use Biscolab\UpDown\Exception\RequestException;
 use Biscolab\UpDown\Exception\ResponseException;
 use GuzzleHttp\Psr7\Response;
 
@@ -82,7 +81,6 @@ class UpDownResponse
     /**
      * @return UpDownResponse
      *
-     * @throws RequestException
      * @throws ResponseException
      */
     protected function parseResponse(): UpDownResponse
@@ -91,24 +89,11 @@ class UpDownResponse
         $json_response = $this->response->getBody()->getContents();
         $array_response = $this->toArray($json_response);
 
-        if (is_null($array_response)) {
-            throw new ResponseException('Missing "results" in UpDownApi Response');
-        }
+        $this->detectError($array_response);
+
         $this->setResult(new UpDownResult($array_response));
 
         return $this;
-    }
-
-    /**
-     * Check HTTP status code (silent/No exceptions!)
-     * @return int
-     */
-    protected function checkHttpStatusCode(): int
-    {
-
-        $this->http_status_code = $this->response->getStatusCode();
-
-        return $this->http_status_code;
     }
 
     /**
@@ -122,6 +107,18 @@ class UpDownResponse
         $this->array_response = json_decode($json_response, true);
 
         return $this->array_response;
+    }
+
+    /**
+     * Check HTTP status code (silent/No exceptions!)
+     * @return int
+     */
+    protected function checkHttpStatusCode(): int
+    {
+
+        $this->http_status_code = $this->response->getStatusCode();
+
+        return $this->http_status_code;
     }
 
     /**
@@ -197,6 +194,25 @@ class UpDownResponse
     {
 
         return intval($this->http_status_code);
+    }
+
+    /**
+     * @param array|null $array_response
+     *
+     * @throws ResponseException
+     */
+    protected function detectError(?array $array_response = null)
+    {
+
+        if (is_null($array_response)) {
+            throw new ResponseException('Missing "results" in UpDownApi Response');
+        }
+
+        if (!empty($array_response['error'])) {
+            $this->setErrorMessage($array_response['error']);
+            throw new ResponseException($array_response['error']);
+        }
+
     }
 
 }
