@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2018 - present
- * ipstack - ResponseException.php
+ * updown - ResponseException.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
  * Initial version created on: 17/11/2018
