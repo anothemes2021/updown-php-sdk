@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) 2018 - present
- * ipstack - AbstractObject.php
+ * Copyright (c) 2019 - present
+ * updown - AbstractObject.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
- * Initial version created on: 17/11/2018
+ * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
@@ -14,7 +14,6 @@ use Biscolab\UpDown\Enum\UpDownFieldType;
 use Biscolab\UpDown\Exception\Exception;
 use Biscolab\UpDown\UpDown;
 use function Biscolab\UpDown\camel2Snake;
-use function Biscolab\UpDown\snake2Camel;
 
 /**
  * Class AbstractObject
@@ -22,11 +21,6 @@ use function Biscolab\UpDown\snake2Camel;
  */
 abstract class AbstractObject
 {
-
-    /**
-     * @var string
-     */
-    protected $key = 'token';
 
     /**
      * @var array
@@ -58,7 +52,7 @@ abstract class AbstractObject
      *
      * @param array $args
      */
-    public function __construct(?array $args = [])
+    public function __construct($args = [])
     {
 
         $this->setUpDown();
@@ -85,7 +79,7 @@ abstract class AbstractObject
     {
 
         if (!$instance instanceof UpDown) {
-            throw new Exception('Invalid Updown instance');
+            throw new Exception('Invalid UpDown instance');
         }
 
         return $instance;
@@ -158,6 +152,8 @@ abstract class AbstractObject
             case UpDownFieldType::ARRAY:
             case UpDownFieldType::BOOL:
                 return $field_value;
+            case UpDownFieldType::DATETIME:
+                return strtotime($field_value);
             default:
                 return ($field_value instanceof $field_type) ? $field_value : new $field_type($field_value);
         }
@@ -234,40 +230,61 @@ abstract class AbstractObject
 
         $camel_field = (empty($match[0])) ? '' : $match[0];
 
-        $snake_field = camel2Snake($camel_field);
+        $snake_field = ($camel_field) ? camel2Snake($camel_field) : $name;
 
-        $field_type = (empty($this->typeCheck[$snake_field])) ? null : $this->typeCheck[$snake_field];
-
-        if (!empty($match[1]) && $field_type) {
+        if (!empty($match[1])) {
             switch ($match[1]) {
                 case 's':
-                    return $this->attributes[$snake_field] = $this->parseFieldValue($field_type, current($arguments));
+                    return $this->__set($snake_field, current($arguments));
                 case 'g':
-                    return $this->attributes[$snake_field];
+                    return $this->__get($snake_field);
             }
         }
 
     }
 
     /**
-     * @return mixed
+     * @param string $snake_field
+     *
+     * @return mixed|null
+     * @throws Exception
      */
-    public function getId()
+    public function __get(string $snake_field)
     {
 
-        $get_function = 'get' . snake2Camel(static::getPrimaryKey());
+        $field_type = $this->getPropertyType($snake_field);
+        if (!$field_type) {
+            throw new Exception('property ' . $snake_field . ' doesn’t exist');
+        }
 
-        return $this->$get_function();
+        return (empty($this->attributes[$snake_field])) ? null : $this->attributes[$snake_field];
 
     }
 
     /**
-     * @return string
+     * @param string $snake_field
+     * @param        $value
+     *
+     * @return mixed
      */
-    protected static function getPrimaryKey(): string
+    public function __set(string $snake_field, $value)
     {
 
-        return 'token';
+        $field_type = $this->getPropertyType($snake_field);
+
+        return $this->attributes[$snake_field] = $this->parseFieldValue($field_type, $value);
+
+    }
+
+    /**
+     * @param string $snake_field
+     *
+     * @return null|string
+     */
+    protected function getPropertyType(string $snake_field): ?string
+    {
+
+        return (empty($this->typeCheck[$snake_field])) ? null : $this->typeCheck[$snake_field];
     }
 
     /**

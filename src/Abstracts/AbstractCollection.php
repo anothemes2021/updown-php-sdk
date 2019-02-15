@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) 2018 - present
- * ipstack - AbstractCollection.php
+ * Copyright (c) 2019 - present
+ * updown - AbstractCollection.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
- * Initial version created on: 17/11/2018
+ * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
@@ -26,6 +26,11 @@ abstract class AbstractCollection
      * @var int
      */
     protected $index = 0;
+
+    /**
+     * @var string
+     */
+    protected $children_class = null;
 
     /**
      * AbstractCollection constructor.
@@ -77,6 +82,9 @@ abstract class AbstractCollection
     protected function parseItem($item)
     {
 
+        if($this->children_class && !$item instanceof $this->children_class) {
+            $item = new $this->children_class($item);
+        }
         return $item;
     }
 

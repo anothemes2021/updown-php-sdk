@@ -4,7 +4,7 @@
  * updown - Check.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
- * Initial version created on: 8/2/2019
+ * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
@@ -12,6 +12,10 @@ namespace Biscolab\UpDown\Objects;
 
 use Biscolab\UpDown\Enum\UpDownFieldType;
 use Biscolab\UpDown\Fields\CheckFields;
+use Biscolab\UpDown\Types\Checks;
+use Biscolab\UpDown\Types\DownTimes;
+use Biscolab\UpDown\Types\Metrics;
+use Biscolab\UpDown\Types\Ssl;
 
 /**
  * Class Check
@@ -24,6 +28,16 @@ class Check extends CrudObject
      * @var string
      */
     protected static $endpoint = 'checks';
+
+    /**
+     * @var string
+     */
+    protected $key = 'token';
+
+    /**
+     * @var string
+     */
+    protected static $collection_type = Checks::class;
 
     /**
      * @var array
@@ -43,6 +57,52 @@ class Check extends CrudObject
         CheckFields::HTTP_BODY          => UpDownFieldType::STRING,
         CheckFields::DISABLED_LOCATIONS => UpDownFieldType::ARRAY,
         CheckFields::CUSTOM_HEADERS     => UpDownFieldType::ARRAY,
+        CheckFields::DOWN               => UpDownFieldType::BOOL,
+        CheckFields::DOWN_SINCE         => UpDownFieldType::DATETIME,
+        CheckFields::LAST_STATUS        => UpDownFieldType::INT,
+        CheckFields::ERROR              => UpDownFieldType::STRING,
+        CheckFields::LAST_CHECK_AT      => UpDownFieldType::DATETIME,
+        CheckFields::NEXT_CHECK_AT      => UpDownFieldType::DATETIME,
+        CheckFields::FAVICON_URL        => UpDownFieldType::STRING,
+        CheckFields::SSL                => Ssl::class,
     ];
+
+    /**
+     * @param int|null    $from
+     * @param int|null    $to
+     * @param null|string $group
+     *
+     * @return Metrics
+     */
+    public function getMetrics(?int $from = null, ?int $to = null, ?string $group = null): Metrics
+    {
+
+        $path = $this->prepareApiPath() . '/metrics';
+
+        $response = $this->updown->get($path, [
+            'from' => ($from) ? date(DATE_ISO8601, $from) : $from,
+            'to' => ($to) ? date(DATE_ISO8601, $to) : $to,
+            'group' => $group,
+        ]);
+
+        return new Metrics($response->getResult()->getData());
+    }
+
+    /**
+     * @param int $page
+     *
+     * @return DownTimes
+     */
+    public function getDowntimes($page = 1): DownTimes
+    {
+
+        $path = $this->prepareApiPath() . '/downtimes';
+
+        $response = $this->updown->get($path, [
+            'page' => $page
+        ]);
+
+        return new DownTimes($response->getResult()->getData());
+    }
 
 }

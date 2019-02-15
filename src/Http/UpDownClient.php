@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) 2018 - present
- * ipstack - UpDownClient.php
+ * Copyright (c) 2019 - present
+ * updown - UpDownClient.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
- * Initial version created on: 17/11/2018
+ * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
@@ -14,6 +14,7 @@ use Biscolab\UpDown\Enum\UpDownRequestMethod;
 use Biscolab\UpDown\Fields\UpDownRequestFields;
 use Biscolab\UpDown\UpDown;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Response;
 
 class UpDownClient
@@ -62,7 +63,7 @@ class UpDownClient
     public function makeCall(string $method, string $url, array $params = [])
     {
 
-        $client_params = [];
+        $client_params = ['http_errors' => false];
         $query_params = [];
 
         switch ($method) {
@@ -81,9 +82,14 @@ class UpDownClient
 
         }
         $url .= '?' . http_build_query($this->addApiKeyToParams($query_params));
-//        var_dump($client_params);exit;
-        /** @var Response $res */
-        $res = $this->client->request(strtoupper($method), $url, $client_params);
+
+        // DO NOT remove event though "http_errors" parameter is set to "false"
+        try {
+            /** @var Response $res */
+            $res = $this->client->request(strtoupper($method), $url, $client_params);
+        } catch (RequestException $e) {
+            $res = $e->getResponse();
+        }
 
         return new UpDownResponse($res);
     }
