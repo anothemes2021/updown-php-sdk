@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2019 - present
- * updown - UpDownRequestFields.php
+ * updown - MetricsFields.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
  * Initial version created on: 15/2/2019
@@ -11,15 +11,15 @@
 namespace Biscolab\UpDown\Fields;
 
 /**
- * Class UpDownRequestFields
+ * Class MetricsFields
  * @package Biscolab\UpDown\Fields
  */
-class UpDownRequestFields
+class MetricsFields
 {
 
-    /**
-     * string: access_key
-     */
-    const API_KEY = 'api-key';
+    const APDEX    = "apdex";
 
+    const REQUESTS = "requests";
+
+    const TIMINGS  = "timings";
 }

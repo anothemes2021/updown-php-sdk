@@ -4,7 +4,7 @@
  * updown - CheckFields.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
- * Initial version created on: 8/2/2019
+ * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
@@ -42,6 +42,22 @@ class CheckFields
     const DISABLED_LOCATIONS = 'disabled_locations';
 
     const CUSTOM_HEADERS = 'custom_headers';
+
+    const DOWN = 'down';
+
+    const DOWN_SINCE = 'down_since';
+
+    const LAST_STATUS = 'last_status';
+
+    const ERROR = 'error';
+
+    const LAST_CHECK_AT = 'last_check_at';
+
+    const NEXT_CHECK_AT = 'next_check_at';
+
+    const FAVICON_URL = 'favicon_url';
+
+    const SSL = 'ssl';
 
 
 }

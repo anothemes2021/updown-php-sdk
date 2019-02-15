@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2019 - present
- * updown - UpDownRequestFields.php
+ * updown - SslFields.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
  * Initial version created on: 15/2/2019
@@ -11,15 +11,24 @@
 namespace Biscolab\UpDown\Fields;
 
 /**
- * Class UpDownRequestFields
+ * Class SslFields
  * @package Biscolab\UpDown\Fields
  */
-class UpDownRequestFields
+class SslFields
 {
 
     /**
-     * string: access_key
+     * @var string
      */
-    const API_KEY = 'api-key';
+    const TESTED_AT = 'tested_at';
 
+    /**
+     * @var string
+     */
+    const VALID = 'valid';
+
+    /**
+     * @var string
+     */
+    const ERROR = 'error';
 }
