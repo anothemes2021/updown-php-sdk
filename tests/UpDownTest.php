@@ -38,7 +38,7 @@ class UpDownTest extends TestCase
     /**
      * @test
      */
-    public function testBasicTest3()
+    public function testCheckApiKey()
     {
 
         $this->assertEquals($_ENV['API_KEY'], $this->updown->getKey());
