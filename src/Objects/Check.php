@@ -66,7 +66,6 @@ class Check extends CrudObject
     protected $typeCheck = [
         CheckFields::TOKEN              => UpDownFieldType::STRING,
         CheckFields::URL                => UpDownFieldType::STRING,
-        CheckFields::URL                => UpDownFieldType::STRING,
         CheckFields::PERIOD             => UpDownFieldType::INT,
         CheckFields::APDEX_T            => UpDownFieldType::FLOAT,
         CheckFields::ENABLED            => UpDownFieldType::BOOL,
