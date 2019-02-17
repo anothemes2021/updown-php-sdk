@@ -11,6 +11,7 @@
 namespace Tests\Unit;
 
 use Biscolab\UpDown\Fields\CheckFields;
+use Biscolab\UpDown\Fields\DownTimeFields;
 use Biscolab\UpDown\Fields\WebHookFields;
 use Biscolab\UpDown\Objects\Check;
 use Biscolab\UpDown\Push\WebHook;
@@ -31,8 +32,8 @@ class WebHookTest extends TestCase
         $this->assertInstanceOf(Check::class, $this->web_hook->{WebHookFields::CHECK});
         $this->assertInstanceOf(DownTime::class, $this->web_hook->{WebHookFields::DOWNTIME});
 
-        $this->assertEquals("500", $this->web_hook->{WebHookFields::DOWNTIME}->getError());
-        $this->assertEquals("2016", date('Y', $this->web_hook->{WebHookFields::DOWNTIME}->getStartedAt()));
+        $this->assertEquals("500", $this->web_hook->{WebHookFields::DOWNTIME}->{DownTimeFields::ERROR});
+        $this->assertEquals("2016", date('Y', $this->web_hook->{WebHookFields::DOWNTIME}->{DownTimeFields::STARTED_AT}));
     }
 
     /**
