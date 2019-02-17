@@ -1,6 +1,10 @@
 # updown
 UpDown.io PHP SDK
 
+[![Build Status](https://travis-ci.org/biscolab/updown-php-sdk.svg?branch=master)](https://travis-ci.org/biscolab/updown-php-sdk)
+[![Code Coverage](https://scrutinizer-ci.com/g/biscolab/updown-php-sdk/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/biscolab/updown-php-sdk/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/biscolab/updown-php-sdk/badges/build.png?b=master)](https://scrutinizer-ci.com/g/biscolab/updown-php-sdk/build-status/master)
+
 First of all you need a [UpDown.io](https://updown.io) account.
 
 Laravel package will be available soon!
