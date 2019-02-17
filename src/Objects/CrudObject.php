@@ -13,7 +13,6 @@ namespace Biscolab\UpDown\Objects;
 use Biscolab\UpDown\Abstracts\AbstractCollection;
 use Biscolab\UpDown\Abstracts\AbstractObject;
 use Biscolab\UpDown\UpDown;
-use function Biscolab\UpDown\snake2Camel;
 
 /**
  * Class CrudObject
@@ -21,11 +20,6 @@ use function Biscolab\UpDown\snake2Camel;
  */
 class CrudObject extends AbstractObject
 {
-
-    /**
-     * @var string
-     */
-    protected $key = '';
 
     /**
      * @var string
@@ -38,20 +32,34 @@ class CrudObject extends AbstractObject
     protected static $collection_type = '';
 
     /**
+     * @var string
+     */
+    protected $key = '';
+
+    /**
      * CrudObject constructor.
      *
      * @param mixed $args
      */
     public function __construct($args = [])
     {
-        if(!is_array($args)) {
+
+        if (!is_array($args)) {
             $args_[self::getPrimaryKey()] = $args;
-        }
-        else {
+        } else {
             $args_ = $args;
         }
 
         parent::__construct($args_);
+    }
+
+    /**
+     * @return string
+     */
+    public static function getPrimaryKey(): string
+    {
+
+        return 'token';
     }
 
     /**
@@ -64,13 +72,22 @@ class CrudObject extends AbstractObject
 
         $response = $this->updown->get($path);
 
-        if(static::$collection_type) {
+        if (static::$collection_type) {
             $collection_type = static::$collection_type;
 
             return new $collection_type($response->getResult()->getData());
         }
 
         return null;
+    }
+
+    /**
+     * @return string
+     */
+    protected static function getEndpoint(): string
+    {
+
+        return UpDown::API_URL . static::$endpoint;
     }
 
     /**
@@ -112,33 +129,13 @@ class CrudObject extends AbstractObject
     }
 
     /**
-     * @return string
-     */
-    protected static function getEndpoint(): string
-    {
-
-        return UpDown::API_URL . static::$endpoint;
-    }
-
-    /**
      * @return mixed
      */
     public function getId()
     {
 
-        $get_function = 'get' . snake2Camel(static::getPrimaryKey());
+        return $this->{static::getPrimaryKey()};
 
-        return $this->$get_function();
-
-    }
-
-    /**
-     * @return string
-     */
-    public static function getPrimaryKey(): string
-    {
-
-        return 'token';
     }
 
     /**
