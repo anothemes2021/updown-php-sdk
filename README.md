@@ -15,7 +15,7 @@ Further info/documentation will be ready ASAP.
 
 You can install the package via composer:
 ```sh
-composer require biscolab/updown
+composer require biscolab/updown-php-sdk
 ```
 
 ## Configuration
