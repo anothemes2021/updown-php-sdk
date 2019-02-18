@@ -23,6 +23,11 @@ class UpDown
 {
 
     /**
+     * @var string
+     */
+    const API_URL = "https://updown.io/api/";
+
+    /**
      * UpDown
      *
      * @var UpDown
@@ -48,11 +53,6 @@ class UpDown
      * @var string
      */
     protected $key = '';
-
-    /**
-     * @var string
-     */
-    const API_URL = "https://updown.io/api/";
 
     /**
      * Api constructor.

@@ -25,26 +25,26 @@ class UpDownFieldType
     /**
      * @var string
      */
-    const INT    = 'int';
+    const INT = 'int';
 
     /**
      * @var string
      */
-    const FLOAT  = 'float';
+    const FLOAT = 'float';
 
     /**
      * @var string
      */
-    const ARRAY  = 'array';
+    const ARRAY = 'array';
 
     /**
      * @var string
      */
-    const BOOL  = 'bool';
+    const BOOL = 'bool';
 
     /**
      * @var string
      */
-    const DATETIME  = 'datetime';
+    const DATETIME = 'datetime';
 
 }
