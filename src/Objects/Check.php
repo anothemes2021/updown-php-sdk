@@ -58,13 +58,14 @@ class Check extends CrudObject
     /**
      * @var string
      */
-    protected $key = 'token';
+    protected static $key = 'token';
 
     /**
      * @var array
      */
     protected $typeCheck = [
         CheckFields::TOKEN              => UpDownFieldType::STRING,
+        CheckFields::URL                => UpDownFieldType::STRING,
         CheckFields::URL                => UpDownFieldType::STRING,
         CheckFields::PERIOD             => UpDownFieldType::INT,
         CheckFields::APDEX_T            => UpDownFieldType::FLOAT,
