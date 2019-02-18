@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2019 - present
- * updown - WebHookFields.php
+ * updown - NodeFields.php
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
  * Initial version created on: 18/2/2019
@@ -11,19 +11,26 @@
 namespace Biscolab\UpDown\Fields;
 
 /**
- * Class EventFields
+ * Class NodeFields
  * @package Biscolab\UpDown\Fields
  */
-class WebHookFields
+class NodeFields
 {
 
-    /**
-     * @var string
-     */
-    const ID = 'id';
+    const NAME         = 'name';
 
-    /**
-     * @var string
-     */
-    const URL = 'url';
+    const IP           = 'ip';
+
+    const IP6          = 'ip6';
+
+    const CITY         = 'city';
+
+    const COUNTRY      = 'country';
+
+    const COUNTRY_CODE = 'country_code';
+
+    const LAT          = 'lat';
+
+    const LNG          = 'lng';
+
 }

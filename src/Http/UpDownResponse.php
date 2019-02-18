@@ -110,6 +110,25 @@ class UpDownResponse
     }
 
     /**
+     * @param array|null $array_response
+     *
+     * @throws ResponseException
+     */
+    protected function detectError(?array $array_response = null)
+    {
+
+        if (is_null($array_response)) {
+            throw new ResponseException('Missing "results" in UpDownApi Response');
+        }
+
+        if (!empty($array_response['error'])) {
+            $this->setErrorMessage($array_response['error']);
+            throw new ResponseException($array_response['error']);
+        }
+
+    }
+
+    /**
      * Check HTTP status code (silent/No exceptions!)
      * @return int
      */
@@ -194,25 +213,6 @@ class UpDownResponse
     {
 
         return intval($this->http_status_code);
-    }
-
-    /**
-     * @param array|null $array_response
-     *
-     * @throws ResponseException
-     */
-    protected function detectError(?array $array_response = null)
-    {
-
-        if (is_null($array_response)) {
-            throw new ResponseException('Missing "results" in UpDownApi Response');
-        }
-
-        if (!empty($array_response['error'])) {
-            $this->setErrorMessage($array_response['error']);
-            throw new ResponseException($array_response['error']);
-        }
-
     }
 
 }

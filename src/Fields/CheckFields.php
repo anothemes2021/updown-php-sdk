@@ -17,47 +17,46 @@ namespace Biscolab\UpDown\Fields;
 class CheckFields
 {
 
-    const TOKEN = 'token';
+    const TOKEN              = 'token';
 
-    const URL = 'url';
+    const URL                = 'url';
 
-    const PERIOD = 'period';
+    const PERIOD             = 'period';
 
-    const APDEX_T = 'apdex_t';
+    const APDEX_T            = 'apdex_t';
 
-    const ENABLED = 'enabled';
+    const ENABLED            = 'enabled';
 
-    const PUBLISHED = 'published';
+    const PUBLISHED          = 'published';
 
-    const ALIAS = 'alias';
+    const ALIAS              = 'alias';
 
-    const STRING_MATCH = 'string_match';
+    const STRING_MATCH       = 'string_match';
 
-    const MUTE_UNTIL = 'mute_until';
+    const MUTE_UNTIL         = 'mute_until';
 
-    const HTTP_VERB = 'http_verb';
+    const HTTP_VERB          = 'http_verb';
 
-    const HTTP_BODY = 'http_body';
+    const HTTP_BODY          = 'http_body';
 
     const DISABLED_LOCATIONS = 'disabled_locations';
 
-    const CUSTOM_HEADERS = 'custom_headers';
+    const CUSTOM_HEADERS     = 'custom_headers';
 
-    const DOWN = 'down';
+    const DOWN               = 'down';
 
-    const DOWN_SINCE = 'down_since';
+    const DOWN_SINCE         = 'down_since';
 
-    const LAST_STATUS = 'last_status';
+    const LAST_STATUS        = 'last_status';
 
-    const ERROR = 'error';
+    const ERROR              = 'error';
 
-    const LAST_CHECK_AT = 'last_check_at';
+    const LAST_CHECK_AT      = 'last_check_at';
 
-    const NEXT_CHECK_AT = 'next_check_at';
+    const NEXT_CHECK_AT      = 'next_check_at';
 
-    const FAVICON_URL = 'favicon_url';
+    const FAVICON_URL        = 'favicon_url';
 
-    const SSL = 'ssl';
-
+    const SSL                = 'ssl';
 
 }

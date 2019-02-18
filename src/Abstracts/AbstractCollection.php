@@ -82,9 +82,10 @@ abstract class AbstractCollection
     protected function parseItem($item)
     {
 
-        if($this->children_class && !$item instanceof $this->children_class) {
+        if ($this->children_class && !$item instanceof $this->children_class) {
             $item = new $this->children_class($item);
         }
+
         return $item;
     }
 
