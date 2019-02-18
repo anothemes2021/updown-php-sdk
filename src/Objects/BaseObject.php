@@ -91,6 +91,19 @@ class BaseObject extends AbstractObject
     }
 
     /**
+     * @param UpDownResponse $response
+     *
+     * @return mixed
+     */
+    protected function getCollection(UpDownResponse $response): AbstractCollection
+    {
+
+        $collection_type = static::$collection_type;
+
+        return new $collection_type($response->getResult()->getData());
+    }
+
+    /**
      * @param bool|null $with_id
      *
      * @return string
@@ -124,19 +137,6 @@ class BaseObject extends AbstractObject
     {
 
         return static::getEndpoint();
-    }
-
-    /**
-     * @param UpDownResponse $response
-     *
-     * @return mixed
-     */
-    protected function getCollection(UpDownResponse $response): AbstractCollection
-    {
-
-        $collection_type = static::$collection_type;
-
-        return new $collection_type($response->getResult()->getData());
     }
 
 }

@@ -13,7 +13,6 @@ namespace Biscolab\UpDown\Objects;
 use Biscolab\UpDown\Abstracts\AbstractObject;
 use Biscolab\UpDown\Enum\UpDownFieldType;
 use Biscolab\UpDown\Fields\EventFields;
-use Biscolab\UpDown\Objects\Check;
 use Biscolab\UpDown\Types\DownTime;
 
 /**
