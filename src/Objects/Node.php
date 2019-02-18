@@ -15,31 +15,17 @@ use Biscolab\UpDown\Enum\UpDownFieldType;
 use Biscolab\UpDown\Fields\NodeFields;
 use Biscolab\UpDown\Http\UpDownResponse;
 use Biscolab\UpDown\Types\Nodes;
-use Biscolab\UpDown\Types\Ssl;
 
 /**
- * Class Check
- * @property string token
- * @property string url
- * @property int    period
- * @property float  apdex_t
- * @property bool   enabled
- * @property bool   published
- * @property string alias
- * @property string string_match
- * @property string mute_until
- * @property string http_verb
- * @property string http_body
- * @property array  disabled_locations
- * @property array  custom_headers
- * @property bool   down
- * @property int    down_since
- * @property int    last_status
- * @property string error
- * @property int    last_check_at
- * @property int    next_check_at
- * @property string favicon_url
- * @property Ssl    ssl
+ * Class Node
+ * @property string name
+ * @property string ip
+ * @property string ip6
+ * @property string city
+ * @property string country
+ * @property string country_code
+ * @property float  lat
+ * @property float  lng
  * @package Biscolab\UpDown\Object
  */
 class Node extends BaseObject
@@ -58,7 +44,7 @@ class Node extends BaseObject
     /**
      * @var string
      */
-    protected static $key = 'name';
+    protected static $key = NodeFields::NAME;
 
     /**
      * @var array

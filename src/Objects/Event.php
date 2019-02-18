@@ -1,37 +1,37 @@
 <?php
 /**
  * Copyright (c) 2019 - present
- * updown - WebHook.php
+ * updown - Eventhp
  * author: Roberto Belotti - roby.belotti@gmail.com
  * web : robertobelotti.com, github.com/biscolab
  * Initial version created on: 15/2/2019
  * MIT license: https://github.com/biscolab/updown-php/blob/master/LICENSE
  */
 
-namespace Biscolab\UpDown\Push;
+namespace Biscolab\UpDown\Objects;
 
 use Biscolab\UpDown\Abstracts\AbstractObject;
 use Biscolab\UpDown\Enum\UpDownFieldType;
-use Biscolab\UpDown\Fields\WebHookFields;
+use Biscolab\UpDown\Fields\EventFields;
 use Biscolab\UpDown\Objects\Check;
 use Biscolab\UpDown\Types\DownTime;
 
 /**
- * Class WebHook
+ * Class Event
  * @property string   event
  * @property Check    check
  * @property DownTime downtime
- * @package Biscolab\UpDown\Push
+ * @package Biscolab\UpDown\Objects
  */
-class WebHook extends AbstractObject
+class Event extends AbstractObject
 {
 
     /**
      * @var array
      */
     protected $typeCheck = [
-        WebHookFields::EVENT    => UpDownFieldType::STRING,
-        WebHookFields::CHECK    => Check::class,
-        WebHookFields::DOWNTIME => DownTime::class
+        EventFields::EVENT    => UpDownFieldType::STRING,
+        EventFields::CHECK    => Check::class,
+        EventFields::DOWNTIME => DownTime::class
     ];
 }
