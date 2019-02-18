@@ -58,7 +58,7 @@ class Check extends CrudObject
     /**
      * @var string
      */
-    protected $key = 'token';
+    protected static $key = 'token';
 
     /**
      * @var array
