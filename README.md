@@ -8,11 +8,12 @@ UpDown.io PHP SDK
 ## Documentation
 Now you can find compete documentation [here](http://updown-sdk.biscolab.com/docs/intro)
 
+## Frameworks
+* [Laravel 5 Package](https://github.com/biscolab/laravel-updown)
+
 ## Getting started
 
 First of all you need a [UpDown.io](https://updown.io) account.
-
-Laravel package will be available soon!
 
 Further info/documentation will be ready ASAP.
 
